@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { RootComponent } from './components/root/root.component';
@@ -7,6 +8,7 @@ import { RootComponent } from './components/root/root.component';
 @NgModule({
   imports: [
     CommonModule,
+    HttpModule,
     CoreRoutingModule
   ],
   declarations: [RootComponent]
