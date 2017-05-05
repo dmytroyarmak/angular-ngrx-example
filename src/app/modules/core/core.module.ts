@@ -1,10 +1,13 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { CoreRoutingModule } from './core-routing.module';
 import { RootComponent } from './components/root/root.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CoreRoutingModule
   ],
   declarations: [RootComponent]
 })
