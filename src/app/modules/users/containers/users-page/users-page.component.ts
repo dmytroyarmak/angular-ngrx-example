@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { UsersService } from '../../services/users/users.service';
+import { LoadAction } from '../../actions/users.actions';
+import { State, getUsers } from '../../reducers/users/users.reducer';
 
 @Component({
   selector: 'dy-users-page',
@@ -12,11 +15,13 @@ export class UsersPageComponent implements OnInit {
   users$: Observable<any>;
 
   constructor(
+    private store: Store<State>,
     private usersService: UsersService
   ) { }
 
   ngOnInit() {
-    this.users$ = this.usersService.getUsers();
+    this.store.dispatch(new LoadAction());
+    this.users$ = this.store.select(getUsers);
   }
 
 }
