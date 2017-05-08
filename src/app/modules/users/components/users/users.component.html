@@ -1,4 +1,1 @@
-<h2>Users</h2>
-<ul>
-  <li *ngFor="let user of users">{{ user.login }}</li>
-</ul>
+<dy-user *ngFor="let user of users" [user]="user"></dy-user>

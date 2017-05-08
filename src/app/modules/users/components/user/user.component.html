@@ -1,0 +1,6 @@
+<div>
+  <strong>{{ user.login }}</strong>
+  <button type="button" (click)="toggleFollowers()">{{ showFollowers ? 'Hide' : 'Show' }} followers</button>
+  <dy-followers-container *ngIf="showFollowers" [login]="user.login"></dy-followers-container>
+  <hr>
+</div>

@@ -1,18 +1,18 @@
-import { Actions, LOAD, LOAD_SUCCESS, LOAD_FAIL } from '../../actions/users.actions';
+import { Actions, LOAD, LOAD_SUCCESS, LOAD_FAIL } from '../../actions/users/users.actions';
 import { User } from '../../models/user.model';
 
 export interface State {
     loaded: boolean;
     loading: boolean;
     failed: boolean;
-    items: User[];
+    entities: User[];
 }
 
 const initialState: State = {
     loaded: false,
     loading: false,
     failed: false,
-    items: []
+    entities: []
 }
 
 export function reducer(state = initialState, action: Actions) {
@@ -28,7 +28,7 @@ export function reducer(state = initialState, action: Actions) {
                 loaded: true,
                 loading: false,
                 failed: false,
-                items: action.payload
+                entities: action.payload.users
             };
         }
 
@@ -39,7 +39,11 @@ export function reducer(state = initialState, action: Actions) {
                 failed: true
             });
         }
+
+        default: {
+            return state;
+        }
     }
 }
 
-export const getUsers = (state: State) => state.items;
+export const getEntities = (state: State) => state.entities;

@@ -7,7 +7,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { LOAD, LoadSuccessAction, LoadFailAction } from '../../actions/users.actions';
+import { LOAD, LoadSuccessAction, LoadFailAction } from '../../actions/users/users.actions';
 import { UsersService } from '../../services/users/users.service';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class UsersEffects {
         .switchMap(() => {
             return this.usersService
                 .getUsers()
-                .map((users) => new LoadSuccessAction(users))
+                .map((users) => new LoadSuccessAction({users}))
                 .catch(() => Observable.of(new LoadFailAction()));
         });
 
